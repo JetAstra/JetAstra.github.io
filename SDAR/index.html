@@ -3,8 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-    content="Synergy of AutoRegression and Diffusion">
+  <meta name="description" content="Synergy of AutoRegression and Diffusion">
   <meta name="keywords" content="SDAR">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SDAR: Synergy of Diffusion and AutoRegression</title>
@@ -38,7 +37,154 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+
+  <!-- ===== Tables (transposed & beautified) ===== -->
+  <!-- 放到 <head> 的 <style>（在外链 CSS 之后） -->
+  <style>
+    .score-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .06);
+      padding: 20px 18px;
+      margin: 22px 0;
+      border: 1px solid rgba(0, 0, 0, .06)
+    }
+
+    .score-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .score-sub {
+      font-size: .9rem;
+      color: #6b7280;
+      margin: 0 0 12px
+    }
+
+    .score-wrap {
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid #e7edf5
+    }
+
+    .score-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-variant-numeric: tabular-nums
+    }
+
+    .score-table th,
+    .score-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eef2f7;
+      text-align: center;
+      vertical-align: middle
+    }
+
+    .score-table th:first-child,
+    .score-table td:first-child {
+      text-align: left
+    }
+
+    .score-table thead th {
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      z-index: 1;
+      font-weight: 700;
+      color: #475569;
+      font-size: .9rem;
+      /* ↓ 原来更大，现缩小 */
+      line-height: 1.15;
+    }
+
+
+    .score-table tbody tr:nth-child(odd) {
+      background: #fcfdff
+    }
+
+    .score-table tbody tr:hover {
+      background: #f2f6ff
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 700;
+      background: #eef2ff;
+      color: #3b5bdb
+    }
+
+    /* —— 整列高亮（含表头），两侧蓝色护栏 —— */
+    .col-highlight {
+      position: relative;
+      background: linear-gradient(0deg, rgba(46, 108, 255, .08), rgba(46, 108, 255, .08)) !important;
+      border-bottom-color: transparent !important;
+      /* 避免行分隔线把高亮切断 */
+    }
+
+    /* 悬停行时也保持高亮不变 */
+    .score-table tbody tr:hover .col-highlight {
+      background: linear-gradient(0deg, rgba(46, 108, 255, .08), rgba(46, 108, 255, .08)) !important;
+    }
+
+    /* 连续的蓝色竖条（不被行分隔线打断） */
+    .col-highlight::before,
+    .col-highlight::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      /* 往上/下各延伸 1px，覆盖分隔线 */
+      bottom: -1px;
+      width: 3px;
+      background: #2e6cff;
+      pointer-events: none;
+    }
+
+    .col-highlight::before {
+      left: 0;
+    }
+
+    .col-highlight::after {
+      right: 0;
+    }
+
+    /* 在“表头”和“最后一行”加圆润端帽（头尾两端更圆滑） */
+    .col-head.col-highlight::before,
+    .col-head.col-highlight::after {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .col-tail.col-highlight::before,
+    .col-tail.col-highlight::after {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    /* 顶部“收口”：给表头那一格加顶部边框、 */
+    .col-head.col-highlight {
+      border-top: 3px solid #2e6cff !important;
+    }
+
+    /* 底部“收口”：给最后一行那一格加底部边框 、 */
+    .col-tail.col-highlight {
+      border-bottom: 3px solid #2e6cff !important;
+    }
+
+    让竖条在圆角处也连贯（和你现有的竖条实现配合）
+  </style>
 </head>
+
+
 
 <body>
 
@@ -97,9 +243,9 @@
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>1</sup>Shanghai AI Laboratory,</span>
               <span class="author-block"><sup>2</sup>Zhejiang University,</span>
-              <span class="author-block"><sup>3</sup>Shanghai JT,</span>
-              <span class="author-block"><sup>4</sup>Maryland,</span>
-              <span class="author-block"><sup>5</sup>Tsinghua</span>
+              <span class="author-block"><sup>3</sup>Shanghai Jiao Tong University,</span>
+              <span class="author-block"><sup>4</sup>University of Maryland, College Park,</span>
+              <span class="author-block"><sup>5</sup>Tsinghua University</span>
             </div>
 
             <div class="column has-text-centered">
@@ -116,7 +262,8 @@
                 </span> -->
                 <!-- Hugging Face Link -->
                 <span class="link-block">
-                  <a href="https://huggingface.co/collections/JetLM/sdar-689b1b6d392a4eeb2664f8ff" class="external-link button is-normal is-rounded is-dark">
+                  <a href="https://huggingface.co/collections/JetLM/sdar-689b1b6d392a4eeb2664f8ff"
+                    class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <!-- 如果你有对应的字体图标类，例如 ai-hf -->
                       🤗
@@ -147,54 +294,252 @@
       <!-- Abstract. -->
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Highlights</h2>
+          <h2 class="title is-3">TL;DR</h2>
           <div class="content has-text-justified">
             <p>
+              We propose <b>SDAR</b> (<b>S</b>ynergy of <b>D</b>iffusion and <b>A</b>uto<b>R</b>egression), a new large
+              language model that synergizes autoregressive and masked discrete diffusion modeling strategies. The model
+              series is continuously trained on Qwen3 and has achieved SOTA performance and speed.
+            </p>
+            <!-- <p>
               blabla
             </p>
             <p>
               blabla
-            </p>
-            <p>
-              blabla
-            </p>
+            </p> -->
           </div>
         </div>
       </div>
       <!--/ Abstract. -->
 
+      <!-- Highlights. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">HighLights</h2>
+          <div class="content has-text-justified">
+            <ol>
+              <li><b>Innovation</b> — Mitigates the inefficiency of AR models during inference while retaining their
+                efficient training characteristics, and leverages diffusion to alleviate causal inductive bias in
+                certain scenarios.
+                <ol>
+                </ol>
+              </li>
+              <li><b>Efficient Computation</b> — Combines the efficient training paradigm of AR models with the
+                efficient
+                inference of diffusion models, achieving <b>2×</b> faster inference speed.</li>
+              <li><b>Strong Performance</b> — On multiple benchmarks:
+                <ul>
+                  <li>Non-reasoning model matches or surpasses the strongest existing non-reasoning AR models of the
+                    same scale.</li>
+                  <li>Reasoning model performs on par with same-tier Qwen3 models.</li>
+                  <li>Unlike most current diffusion-based LMs (often limited to small-scale experiments or niche tasks,
+                    e.g., code generation), our models are fully production-ready.</li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <!--/ Highlights. -->
 
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>JetAstra2025,
-  author    = {xxx},
-  title     = {SDAR: Synergy of Diffusion and AutoRegression},
-  year      = {2025},
+      <!-- Results. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Results</h2>
+          <!-- 表1 -->
+          <!-- ========== 表 A：Qwen Baseline vs SDAR（列=模型，行=benchmark） ========== -->
+          <!-- ========== 表 A（6 模型；第2与第5列高亮） ========== -->
+          <div class="score-card">
+            <h3 class="score-title"><span class="badge">SDAR v.s. Qwen</span></h3>
+            <p class="score-sub"></p>
+            <div class="score-wrap">
+              <table class="score-table">
+                <thead>
+                  <tr>
+                    <th>Benchmark</th>
+                    <th class="col-highlight col-head">SDAR-1.7B-Chat</th>
+                    <th>Qwen3-1.7B-Base</th>
+                    <th>Qwen3-1.7B-AR-SFT</th>
+                    <th class="col-highlight col-head">SDAR-30B-A3B-Chat</th>
+                    <th>Qwen3-30B-Base</th>
+                    <th>Qwen3-30B-AR-SFT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MMLU</td>
+                    <td class="col-highlight">62.9</td>
+                    <td>62.6</td>
+                    <td>63.82</td>
+                    <td class="col-highlight">82.80</td>
+                    <td>81.38</td>
+                    <td>82.23</td>
+                  </tr>
+                  <tr>
+                    <td>Math500</td>
+                    <td class="col-highlight">63.2</td>
+                    <td>43.5</td>
+                    <td>62.00</td>
+                    <td class="col-highlight">77.8</td>
+                    <td>59.04</td>
+                    <td>76.8</td>
+                  </tr>
+                  <tr>
+                    <td>GSM8K</td>
+                    <td class="col-highlight">80.06</td>
+                    <td>75.44</td>
+                    <td>81.12</td>
+                    <td class="col-highlight">92.27</td>
+                    <td>91.81</td>
+                    <td>92.65</td>
+                  </tr>
+                  <tr>
+                    <td>HumanEval</td>
+                    <td class="col-highlight">61.59</td>
+                    <td>&ndash;</td>
+                    <td>65.85</td>
+                    <td class="col-highlight">83.54</td>
+                    <td>&ndash;</td>
+                    <td>84.76</td>
+                  </tr>
+                  <tr>
+                    <td>MBPP</td>
+                    <td class="col-highlight">61.09</td>
+                    <td>55.40</td>
+                    <td>61.87</td>
+                    <td class="col-highlight">74.32</td>
+                    <td>74.40</td>
+                    <td>75.10</td>
+                  </tr>
+                  <tr>
+                    <td>IFEval</td>
+                    <td class="col-highlight">43.44</td>
+                    <td>&ndash;</td>
+                    <td>43.25</td>
+                    <td class="col-highlight">58.60</td>
+                    <td>&ndash;</td>
+                    <td>57.67</td>
+                  </tr>
+                  <tr>
+                    <td>MathBench</td>
+                    <td class="col-highlight col-tail">63.55</td>
+                    <td>&ndash;</td>
+                    <td>60.53</td>
+                    <td class="col-highlight col-tail">78.33</td>
+                    <td>&ndash;</td>
+                    <td>78.41</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- ========== 表 B（SDAR 系列） ========== -->
+          <div class="score-card">
+            <h3 class="score-title"><span class="badge">SDAR Series</span></h3>
+            <p class="score-sub"></p>
+            <div class="score-wrap">
+              <table class="score-table">
+                <thead>
+                  <tr>
+                    <th>Benchmark</th>
+                    <th>SDAR-1.7B-Chat</th>
+                    <th>SDAR-4B-Chat</th>
+                    <th>SDAR-8B-Chat</th>
+                    <th>SDAR-30B-A3B-Chat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MMLU</td>
+                    <td>62.9</td>
+                    <td>74.85</td>
+                    <td>78.61</td>
+                    <td>82.80</td>
+                  </tr>
+                  <tr>
+                    <td>Math500</td>
+                    <td>63.2</td>
+                    <td>72.8</td>
+                    <td>78.6</td>
+                    <td>77.8</td>
+                  </tr>
+                  <tr>
+                    <td>GSM8K</td>
+                    <td>80.06</td>
+                    <td>89.92</td>
+                    <td>91.28</td>
+                    <td>92.27</td>
+                  </tr>
+                  <tr>
+                    <td>HumanEval</td>
+                    <td>61.59</td>
+                    <td>71.95</td>
+                    <td>78.66</td>
+                    <td>83.54</td>
+                  </tr>
+                  <tr>
+                    <td>MBPP</td>
+                    <td>61.09</td>
+                    <td>65.37</td>
+                    <td>71.98</td>
+                    <td>74.32</td>
+                  </tr>
+                  <tr>
+                    <td>IFEval</td>
+                    <td>43.44</td>
+                    <td>56.56</td>
+                    <td>61.37</td>
+                    <td>58.60</td>
+                  </tr>
+                  <tr>
+                    <td>MathBench</td>
+                    <td>63.55</td>
+                    <td>74.71</td>
+                    <td>76.94</td>
+                    <td>78.33</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!--/ Results. -->
+
+
+      <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+          <h2 class="title">BibTeX</h2>
+          <pre><code>JetAstra2025,
+  author={xxx},
+  title={SDAR: Synergy of Diffusion and AutoRegression},
+  year={2025},
   institution={Shanghai AI Lab},
   url={https://github.com/JetAstra/SDAR}
 }</code></pre>
-    </div>
-  </section>
-
-
-  <footer class="footer">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-              Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            The website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
-          </p>
         </div>
-      </div>
+      </section>
+
+
+      <footer class="footer">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This website is licensed under a <a rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                  Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+              <p>
+                The website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+              </p>
+            </div>
+          </div>
+        </div>
     </div>
-    </div>
-  </footer>
+    </footer>
 
 </body>
 
