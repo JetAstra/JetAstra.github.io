@@ -70,6 +70,7 @@
       overflow: hidden;
       border-radius: 14px;
       border: 1px solid #e7edf5
+      
     }
 
     .score-table {
@@ -179,8 +180,11 @@
     .col-tail.col-highlight {
       border-bottom: 3px solid #2e6cff !important;
     }
-
-    让竖条在圆角处也连贯（和你现有的竖条实现配合）
+    /* 只显示左侧蓝条 */
+.col-highlight--left::after { display: none; }
+/* 只显示右侧蓝条 */
+.col-highlight--right::before { display: none; }
+    
   </style>
 </head>
 
@@ -249,9 +253,9 @@
 
             <div class="is-size-5 publication-authors">
               <span class="author-block"><sup>1</sup>Shanghai AI Laboratory,</span>
-              
+
               <span class="author-block"><sup>2</sup>University of Maryland, College Park,</span>
-              
+
               <span class="author-block"><sup>3</sup>Tsinghua University</span>
               <br>
               <span class="author-block" style="font-size: 0.85em;"><sup>*</sup>Equal Contribution</span>
@@ -308,7 +312,9 @@
           <h2 class="title is-3">TL;DR</h2>
           <div class="content has-text-justified">
             <p>
-              We propose <b>SDAR</b> (<b>S</b>ynergy of <b>D</b>iffusion and <b>A</b>uto<b>R</b>egression), a new language modeling paradigm that synergizes autoregressive and masked discrete diffusion modeling strategies. The model
+              We propose <b>SDAR</b> (<b>S</b>ynergy of <b>D</b>iffusion and <b>A</b>uto<b>R</b>egression), a new
+              language modeling paradigm that synergizes autoregressive and masked discrete diffusion modeling
+              strategies. The model
               series is continuously trained on Qwen3 and has achieved SOTA performance and speed.
             </p>
             <p>
@@ -326,10 +332,13 @@
           </div>
           <div class="content has-text-justified">
             <p>
-              We compare the performance of <b>SDAR-30B-A3B-Chat</b> and <b>Qwen3-30B-A3B-AR-SFT</b> under both dynamic and static inference settings. Additionally, we evaluate how varying the threshold in dynamic inference affects speed relative to static inference.
+              We compare the performance of <b>SDAR-30B-A3B-Chat</b> and <b>Qwen3-30B-A3B-AR-SFT</b> under both dynamic
+              and static inference settings. Additionally, we evaluate how varying the threshold in dynamic inference
+              affects speed relative to static inference.
             </p>
             <ul>
-              <li>While the static inference speed of SDAR is comparable to that of AR models, its dynamic mode achieves over <b>2×</b> speed-up over its static counterpart with almost no loss in accuracy.</li>
+              <li>While the static inference speed of SDAR is comparable to that of AR models, its dynamic mode achieves
+                over <b>2×</b> speed-up over its static counterpart with almost no loss in accuracy.</li>
               <li>The speedup effect tends to become more pronounced with increasing model size.</li>
             </ul>
           </div>
@@ -526,6 +535,189 @@
               </table>
             </div>
           </div>
+
+          <!-- ========== 表 C（SDAR-sci） ========== -->
+          <div class="score-card">
+            <h3 class="score-title"><span class="badge">SDAR-sci vs Others</span></h3>
+            <div class="score-wrap" style="overflow-x: auto; table-layout: auto;">
+              <table class="score-table">
+                <colgroup>
+                  <col style="min-width: auto;"> <!-- 第一列 Benchmark -->
+                  <col span="12" style="min-width: 130px;"> <!-- 后面7列统一 -->
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th>Benchmark</th>
+                    <th>AR-30B-A3B-Sci</th>
+                    <th class="col-highlight col-head col-highlight--left">SDAR-30B-A3B-Sci (greedy)</th>
+                    <th class="col-highlight col-head col-highlight--right">SDAR-30B-A3B-Sci (sample)</th>
+                    <th>Intern-S1(235B-A22B)</th>
+                    <th>InternVL3-78B</th>
+                    <th>Qwen2.5-VL-72B</th>
+                    <th>DeepSeek-R1-0528</th>
+                    <th>Qwen3-235B-A22B</th>
+                    <th>Kimi-K2-Instruct</th>
+                    <th>Gemini-2.5 Pro</th>
+                    <th>o3</th>
+                    <th>Grok-4</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>MMLU_pro</td>
+                    <td>78.3</td>
+                    <td class="col-highlight col-highlight--left">80.2</td>
+                    <td class="col-highlight col-highlight--right">80.6</td>
+                    <td>83.5</td>
+                    <td>73.0</td>
+                    <td>72.1</td>
+                    <td>83.4</td>
+                    <td>82.2</td>
+                    <td>82.7</td>
+                    <td>86.0</td>
+                    <td>85.0</td>
+                    <td>85.9</td>
+                  </tr>
+                  <tr>
+                    <td>GPQA_diamond</td>
+                    <td>61.2</td>
+                    <td class="col-highlight col-highlight--left">73.7</td>
+                    <td class="col-highlight col-highlight--right">71.8</td>
+                    <td>77.3</td>
+                    <td>49.9</td>
+                    <td>49.0</td>
+                    <td>80.6</td>
+                    <td>71.1</td>
+                    <td>77.8</td>
+                    <td>83.8</td>
+                    <td>83.3</td>
+                    <td>87.5</td>
+                  </tr>
+                  <tr>
+                    <td>AIME2024</td>
+                    <td>74.9</td>
+                    <td class="col-highlight col-highlight--left">73.3</td>
+                    <td class="col-highlight col-highlight--right">76.2</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>AIME2025</td>
+                    <td>60.7</td>
+                    <td class="col-highlight col-highlight--left">63.3</td>
+                    <td class="col-highlight col-highlight--right">62.2</td>
+                    <td>86.0</td>
+                    <td>10.7</td>
+                    <td>10.9</td>
+                    <td>87.5</td>
+                    <td>81.5</td>
+                    <td>51.4</td>
+                    <td>83.0</td>
+                    <td>88.9</td>
+                    <td>91.7</td>
+                  </tr>
+                  <tr>
+                    <td>Livemathbench_hard</td>
+                    <td>55.4</td>
+                    <td class="col-highlight col-highlight--left">60.7</td>
+                    <td class="col-highlight col-highlight--right">57.9</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>LCB Code Gen V5</td>
+                    <td>51.5</td>
+                    <td class="col-highlight col-highlight--left">40.7</td>
+                    <td class="col-highlight col-highlight--right">49.1</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>LCB Code Gen V6</td>
+                    <td>46.3</td>
+                    <td class="col-highlight col-highlight--left">42.3</td>
+                    <td class="col-highlight col-highlight--right">51.4</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                  </tr>
+                  <tr>
+                    <td>ChemBench</td>
+                    <td>60.5</td>
+                    <td class="col-highlight col-highlight--left">75.1</td>
+                    <td class="col-highlight col-highlight--right">75.1</td>
+                    <td>83.4</td>
+                    <td>61.3</td>
+                    <td>61.6</td>
+                    <td>75.6</td>
+                    <td>75.8</td>
+                    <td>75.3</td>
+                    <td>82.8</td>
+                    <td>81.6</td>
+                    <td>83.3</td>
+                  </tr>
+                  <tr>
+                    <td>PHYSICS</td>
+                    <td>39.0</td>
+                    <td class="col-highlight col-highlight--left">52.9</td>
+                    <td class="col-highlight col-highlight--right">55.6</td>
+                    <td>44.0</td>
+                    <td>23.1</td>
+                    <td>15.7</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>–</td>
+                    <td>40.0</td>
+                    <td>47.9</td>
+                    <td>42.8</td>
+                  </tr>
+                  <tr>
+                    <td>ProteinLMBench</td>
+                    <td>59.5</td>
+                    <td class="col-highlight col-tail col-highlight--left">60.7</td>
+                    <td class="col-highlight col-tail col-highlight--right">60.0</td>
+                    <td>63.1</td>
+                    <td>61.6</td>
+                    <td>61.0</td>
+                    <td>61.4</td>
+                    <td>59.8</td>
+                    <td>66.7</td>
+                    <td>62.9</td>
+                    <td>67.7</td>
+                    <td>66.2</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
 
 
         </div>
