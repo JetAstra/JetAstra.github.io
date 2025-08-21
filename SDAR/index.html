@@ -303,15 +303,19 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- arxiv Link. -->
-                <!-- <span class="link-block">
-                  <a href="" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
+                <span class="link-block">
+                  <a href="https://jetastra.github.io/SDAR/"
+                    class="external-link button is-normal is-rounded is-dark is-justify-content-center"> <!-- 水平居中 -->
+                    <span class="icon is-small">
                       <i class="ai ai-arxiv"></i>
                     </span>
-                    <span>arXiv</span>
-                    <span style="font-size: 0.6em; color: #cccccc;">coming soon</span>
+                    <span class="is-flex is-flex-direction-column is-align-items-center has-text-centered"
+                      style="line-height:1.05; gap:2px;">
+                      <span>arXiv</span>
+                      <span class="has-text-grey-light" style="font-size:0.6rem; line-height:1;">coming soon</span>
+                    </span>
                   </a>
-                </span> -->
+                </span>
                 <!-- Hugging Face Link -->
                 <span class="link-block">
                   <a href="https://huggingface.co/collections/JetLM/sdar-689b1b6d392a4eeb2664f8ff"
@@ -380,36 +384,20 @@
       </video>
 
       <!-- Highlights. -->
-      <!-- <div class="columns is-centered has-text-centered">
+      <div class="columns is-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">HighLights</h2>
-          <div class="content has-text-justified">
-            <ol>
-              <li><b>Innovation</b> — Mitigates the inefficiency of AR models during inference while retaining their
-                efficient training characteristics, and leverages diffusion to alleviate causal inductive bias in
-                certain scenarios.
-                <ol>
-                </ol>
-              </li>
-              <li><b>Efficient Computation</b> — Combines the efficient training paradigm of AR models with the
-                efficient
-                inference of diffusion models, achieving <b>2×</b> faster inference speed.</li>
-              <li><b>Strong Performance</b> — On multiple benchmarks:
-                <ul>
-                  <li>Non-reasoning model matches or surpasses the strongest existing non-reasoning AR models of the
-                    same scale.</li>
-                  <li>Reasoning model performs on par with same-tier Qwen3 models.</li>
-                  <li>Unlike most current diffusion-based LMs (often limited to small-scale experiments or niche tasks,
-                    e.g., code generation), our models are fully production-ready.</li>
-                </ul>
-              </li>
-            </ol>
+          <h2 class="title is-3 has-text-centered">HighLights</h2>
+          <div class="content has-text-justified"
+               style="max-width:800px; font-size:1.2rem; margin:0 auto;">
+            <ul>
+              <li>🚀 <b>Training</b> —— Low-Cost AR-to-BlockDiffusion</li>
+              <li>⚡ <b>Speed</b> —— 2-4× Faster Inference</li>
+              <li>🧠 <b>Performance</b> —— Advanced performance on science reasoning benchmarks (e.g., High scores on GPQA and ChemBench; ranked <b>Top‑1 in Physics</b>.)</li>
+            </ul>
           </div>
         </div>
-      </div> -->
+      </div><br>
       <!--/ Highlights. -->
-
-
 
       <!-- Results. -->
       <div class="columns is-centered has-text-centered">
