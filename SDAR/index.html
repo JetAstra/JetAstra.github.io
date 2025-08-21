@@ -41,47 +41,6 @@
   <!-- ===== Tables (transposed & beautified) ===== -->
   <!-- 放到 <head> 的 <style>（在外链 CSS 之后） -->
   <style>
-    /* 顶部横幅背景图 */
-.page-hero{
-  position: relative;
-  /* 换成你的图片路径 */
-  background-image: url("./static/images/SDAR_logo.png");
-  background-size: cover;          /* 等比铺满 */
-  background-position: center;     /* 居中裁切 */
-  background-repeat: no-repeat;
-  /* 想要“轻度视差”可启用，移动端会禁用：
-  background-attachment: fixed;
-  */
-}
-
-/* 半透明遮罩，提升文字对比度 */
-.page-hero::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  /* 亮色页的常用淡白遮盖，也可改成黑色：rgba(0,0,0,0.35) */
-  background: linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.78),
-      rgba(255,255,255,0.86)
-  );
-}
-
-/* 让正文内容浮在遮罩上方，并控制内边距 / 高度 */
-.page-hero .hero-body{
-  position: relative;
-  z-index: 1;
-  padding-top: 3.5rem;   /* 调整上下留白 */
-  padding-bottom: 2.5rem;
-  /* 最小高度（配合 Bulma 的 is-medium，可按需改大/改小） */
-  min-height: 320px;
-}
-
-/* 小屏上减少高度/关闭 fixed 以避免卡顿 */
-@media (max-width: 768px){
-  .page-hero .hero-body{ padding-top: 2.5rem; padding-bottom: 2rem; min-height: 260px; }
-  .page-hero{ background-attachment: scroll; }
-}
     .score-card {
       background: #fff;
       border-radius: 18px;
@@ -310,7 +269,7 @@
   </nav>
 
 
-  <section class="hero is-medium">
+  <section class="hero">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
@@ -330,15 +289,12 @@
               </span>
             </div>
 
-            <div class="is-size-5 publication-authors">
+            <div class="is-size-4 publication-authors">
               <span class="author-block"><sup>1</sup>Shanghai AI Lab,</span>
               <span class="author-block"><sup>2</sup>Tsinghua University,</span>
               <span class="author-block"><sup>3</sup>Shanghai Jiao Tong University,</span>
               <span class="author-block"><sup>4</sup>University of Maryland, College Park,</span>
               <span class="author-block"><sup>5</sup>Zhejiang University</span>
-
-              <!-- <span class="author-block"><sup>2</sup>University of Maryland, College Park,</span>
-              <span class="author-block"><sup>3</sup>Tsinghua University</span> -->
               <br>
               <span class="author-block" style="font-size: 0.85em;"><sup>*</sup>Equal Contribution,</span>
               <span class="author-block" style="font-size: 0.85em;"><sup>&dagger;</sup>Project Leader</span>
