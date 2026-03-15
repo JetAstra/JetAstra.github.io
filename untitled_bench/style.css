@@ -127,6 +127,22 @@ body {
 .bench-table tbody tr:hover { background-color: #f1f5f9; }
 .bench-table a:hover { text-decoration: underline; }
 
+.model-name-cell { text-align: left; }
+.model-name-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    text-decoration: none;
+}
+.model-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
 /* Chart Area */
 .chart-container {
     position: relative;
@@ -229,5 +245,16 @@ body {
 .model-title {
     font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 1.75rem;
+}
+.model-detail-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.model-detail-heading .model-detail-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
 }
 .model-meta { color: var(--text-light); }

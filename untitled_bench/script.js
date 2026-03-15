@@ -12,8 +12,22 @@ async function loadModels() {
     benchmarkData = models.map((m, i) => ({ ...m, rank: i + 1 }));
 }
 
+const iconImageCache = {};
+function loadIconImages() {
+    const unique = [...new Set(benchmarkData.map(m => m.icon_name).filter(Boolean))];
+    return Promise.all(unique.map(name => {
+        return new Promise(resolve => {
+            const img = new Image();
+            img.onload = () => { iconImageCache[name] = img; resolve(); };
+            img.onerror = () => resolve();
+            img.src = `assets/${name}.svg`;
+        });
+    }));
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     await loadModels();
+    await loadIconImages();
     renderTable();
 
     // Custom tooltip positioner: center of bar, expand upwards
@@ -31,6 +45,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
     }
 
+    // Plugin to draw model icon + name labels (left-aligned) on y-axis
+    if (window.Chart) {
+        Chart.register({
+            id: 'modelLabelIcons',
+            afterDraw(chart) {
+                const meta = chart.getDatasetMeta(0);
+                if (!meta || !meta.data.length) return;
+                const ctx = chart.ctx;
+                const left = 12;
+                const iconSize = 20;
+                const gap = 8;
+                ctx.save();
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'middle';
+                ctx.fillStyle = '#0f172a';
+                ctx.font = "12px SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
+                meta.data.forEach((bar, i) => {
+                    const model = benchmarkData[i];
+                    if (!model) return;
+                    const y = bar.y;
+                    const img = model.icon_name && iconImageCache[model.icon_name];
+                    if (img) {
+                        ctx.drawImage(img, left, y - iconSize / 2, iconSize, iconSize);
+                    }
+                    const textX = left + (img ? iconSize + gap : 0);
+                    ctx.fillText(model.name, textX, y);
+                });
+                ctx.restore();
+            }
+        });
+    }
+
     // Plugin to draw value labels so they don't disappear on hover
     if (window.Chart) {
         Chart.register({
@@ -42,18 +88,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (!dataset || !meta) return;
 
                 ctx.save();
-                ctx.fillStyle = '#ffffff';
                 ctx.font = 'bold 12px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
                 ctx.textBaseline = 'middle';
                 ctx.textAlign = 'center';
 
+                const labelColors = dataset.valueLabelColors;
                 dataset.data.forEach((value, index) => {
                     const bar = meta.data[index];
                     if (!bar) return;
+                    ctx.fillStyle = (labelColors && labelColors[index]) ? labelColors[index] : '#ffffff';
                     const props = bar.getProps(['base', 'x', 'y'], true);
                     const centerX = (props.base + props.x) / 2;
-                    const text = value.toString();
-                    ctx.fillText(text, centerX, props.y);
+                    ctx.fillText(String(value), centerX, props.y);
                 });
 
                 ctx.restore();
@@ -64,18 +110,68 @@ document.addEventListener('DOMContentLoaded', async () => {
     initChart();
 });
 
+/** Top 25% green, middle 50% yellow, bottom 25% red (by rank after score sort). */
+function quartileBarStyles(n) {
+    const GREEN = 'rgba(34, 197, 94, 0.85)';
+    const GREEN_H = 'rgba(34, 197, 94, 1)';
+    const YELLOW = 'rgba(234, 179, 8, 0.9)';
+    const YELLOW_H = 'rgba(202, 138, 4, 1)';
+    const RED = 'rgba(239, 68, 68, 0.85)';
+    const RED_H = 'rgba(239, 68, 68, 1)';
+    if (n <= 0) return { backgroundColor: [], hoverBackgroundColor: [], valueLabelColors: [] };
+    if (n === 1) {
+        return {
+            backgroundColor: [GREEN],
+            hoverBackgroundColor: [GREEN_H],
+            valueLabelColors: ['#ffffff']
+        };
+    }
+    const nGreen = Math.round(n * 0.25);
+    const nRed = Math.round(n * 0.25);
+    const nYellow = n - nGreen - nRed;
+    const backgroundColor = [];
+    const hoverBackgroundColor = [];
+    const valueLabelColors = [];
+    for (let i = 0; i < nGreen; i++) {
+        backgroundColor.push(GREEN);
+        hoverBackgroundColor.push(GREEN_H);
+        valueLabelColors.push('#ffffff');
+    }
+    for (let i = 0; i < nYellow; i++) {
+        backgroundColor.push(YELLOW);
+        hoverBackgroundColor.push(YELLOW_H);
+        valueLabelColors.push('#ffffff');
+    }
+    for (let i = 0; i < nRed; i++) {
+        backgroundColor.push(RED);
+        hoverBackgroundColor.push(RED_H);
+        valueLabelColors.push('#ffffff');
+    }
+    return { backgroundColor, hoverBackgroundColor, valueLabelColors };
+}
+
 function renderTable() {
     const tableBody = document.getElementById('ranking-body');
-    tableBody.innerHTML = benchmarkData.map(item => `
+    tableBody.innerHTML = benchmarkData.map(item => {
+        const iconHtml = item.icon_name
+            ? `<img src="assets/${item.icon_name}.svg" alt="" class="model-icon" />`
+            : '';
+        return `
         <tr>
             <td><strong>#${item.rank}</strong></td>
-            <td><a href="details/index.html?id=${item.id}" style="color: #2563eb; font-weight: 600; font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; text-decoration: none;">${item.name}</a></td>
+            <td class="model-name-cell">
+                <a href="details/index.html?id=${item.id}" class="model-name-link">
+                    ${iconHtml}
+                    <span>${item.name}</span>
+                </a>
+            </td>
             <td>${item.org}</td>
             <td style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: bold;">${item.score}</td>
             <td>${item.params}</td>
             <td style="color: #64748b; font-size: 0.85rem;">${item.date}</td>
         </tr>
-    `).join('');
+    `;
+    }).join('');
 }
 
 function initChart() {
@@ -96,6 +192,9 @@ function initChart() {
         tooltipEl.setAttribute('aria-hidden', 'true');
     });
 
+    const n = benchmarkData.length;
+    const quartile = quartileBarStyles(n);
+
     new Chart(ctx, {
         type: 'bar',
         data: {
@@ -103,8 +202,9 @@ function initChart() {
             datasets: [{
                 label: 'Aggregate Score',
                 data: benchmarkData.map(d => d.score),
-                backgroundColor: 'rgba(37, 99, 235, 0.8)',
-                hoverBackgroundColor: 'rgba(37, 99, 235, 1)',
+                backgroundColor: quartile.backgroundColor,
+                hoverBackgroundColor: quartile.hoverBackgroundColor,
+                valueLabelColors: quartile.valueLabelColors,
                 borderRadius: 999,
                 borderSkipped: false
             }]
@@ -113,6 +213,9 @@ function initChart() {
             responsive: true,
             maintainAspectRatio: false,
             indexAxis: 'y',
+            layout: {
+                padding: { left: 160 }
+            },
             scales: {
                 x: {
                     beginAtZero: true,
@@ -123,9 +226,7 @@ function initChart() {
                 y: {
                     grid: { display: false },
                     ticks: {
-                        font: {
-                            family: "SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
-                        }
+                        display: false
                     }
                 }
             },

@@ -21,7 +21,18 @@ function renderDetail(model) {
     document.getElementById('detail-content').style.display = 'block';
 
     document.title = `${model.name} | MiniBench`;
-    document.getElementById('model-name').textContent = model.name;
+    const nameEl = document.getElementById('model-name');
+    nameEl.innerHTML = '';
+    if (model.icon_name) {
+        const img = document.createElement('img');
+        img.src = `../assets/${model.icon_name}.svg`;
+        img.alt = '';
+        img.className = 'model-icon model-detail-icon';
+        nameEl.appendChild(img);
+    }
+    const nameSpan = document.createElement('span');
+    nameSpan.textContent = model.name;
+    nameEl.appendChild(nameSpan);
     document.getElementById('model-meta').textContent =
         `${model.org} · Aggregate ${model.score} · ${model.params} · Updated ${model.date}`;
 
