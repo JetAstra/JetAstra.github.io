@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Details | MacAgentBench</title>
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="../index.html" class="logo">MacAgent<span>Bench</span></a>
+            <ul class="nav-links">
+                <li><a href="../index.html#rankings">Rankings</a></li>
+                <li><a href="../index.html#snapshots">Snapshots</a></li>
+                <li><a href="../about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="loading" class="section">Loading model data...</div>
+        <div id="not-found" class="section" style="display:none;">
+            <p>Model not found. <a href="../index.html">Back to Leaderboard</a></p>
+        </div>
+        <div id="detail-content" style="display:none;">
+            <section class="section model-header">
+                <a href="../index.html" class="back-link">← Back to Leaderboard</a>
+                <div class="section-header" style="margin-top:1rem;">
+                    <h1 id="model-name" class="model-title model-detail-heading"></h1>
+                    <p id="model-meta" class="model-meta"></p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <h2>Task Success Rates</h2>
+                    <p>Per-task performance breakdown</p>
+                </div>
+                <div class="chart-container">
+                    <canvas id="taskChart"></canvas>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="table-wrapper">
+                    <table class="bench-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Success Rate (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MacAgentBench Research Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="detail.js"></script>
+</body>
+</html>

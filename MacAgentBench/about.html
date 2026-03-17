@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | MacAgentBench</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-content { background: var(--white); border-radius: 12px; padding: 40px 48px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .about-content h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .about-content h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: var(--text-dark); }
+        .about-content h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; }
+        .about-content h4 { font-size: 1rem; margin: 1.25rem 0 0.5rem; color: var(--text-light); }
+        .about-content p { margin-bottom: 1rem; }
+        .about-content ul, .about-content ol { margin: 1rem 0; padding-left: 1.5rem; }
+        .about-content li { margin-bottom: 0.5rem; }
+        .about-content a { color: var(--primary-color); text-decoration: none; }
+        .about-content a:hover { text-decoration: underline; }
+        .about-content strong { font-weight: 600; }
+        .about-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+        .about-content th, .about-content td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; }
+        .about-content th { background: var(--bg-light); font-weight: 600; }
+        .about-content tr:nth-child(even) { background: #fafafa; }
+        .about-content code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+        .about-content .task-table { overflow-x: auto; }
+        .about-content input[type="checkbox"] { margin-right: 8px; }
+        .about-content .loading { color: var(--text-light); text-align: center; padding: 40px; }
+        .about-content .error { color: #dc2626; padding: 40px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MacAgent<span>Bench</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#rankings">Rankings</a></li>
+                <li><a href="index.html#snapshots">Snapshots</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="section">
+            <article class="about-content" id="about-content">
+                <p class="loading">Loading README...</p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MacAgentBench Research Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        (function() {
+            const container = document.getElementById('about-content');
+            fetch('README.md')
+                .then(function(res) { return res.ok ? res.text() : Promise.reject(res.status); })
+                .then(function(md) {
+                    marked.setOptions({ gfm: true, breaks: true });
+                    container.innerHTML = marked.parse(md);
+                    container.querySelectorAll('a[href^="http"]').forEach(function(a) {
+                        a.setAttribute('target', '_blank');
+                    });
+                })
+                .catch(function(err) {
+                    container.innerHTML = '<p class="error">Failed to load README.md. Please ensure the file exists and the page is served via HTTP(S).</p>';
+                });
+        })();
+    </script>
+</body>
+</html>
