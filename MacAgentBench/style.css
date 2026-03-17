@@ -1,0 +1,268 @@
+:root {
+    --primary-color: #2563eb;
+    --text-dark: #0f172a;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1.2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+}
+
+.logo span { color: var(--primary-color); }
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--primary-color); }
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--white);
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+.hero p { opacity: 0.8; font-size: 1.1rem; }
+
+/* Sections */
+.section { padding: 40px 0; }
+.section-header { margin-bottom: 30px; }
+.section-header h2 { font-size: 1.75rem; color: var(--text-dark); margin-bottom: 8px; }
+.section-header p { color: var(--text-light); }
+
+.divider {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+}
+
+/* Table Style */
+.table-wrapper {
+    background: var(--white);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.bench-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.bench-table th {
+    background-color: #f8fafc;
+    padding: 18px 24px;
+    font-weight: 600;
+    color: var(--text-light);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.bench-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+}
+
+.bench-table tbody tr:last-child td { border-bottom: none; }
+.bench-table tbody tr:hover { background-color: #f1f5f9; }
+.bench-table a:hover { text-decoration: underline; }
+
+.model-name-cell { text-align: left; }
+.model-name-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    text-decoration: none;
+}
+.model-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* Chart Area */
+.chart-container {
+    position: relative;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    min-height: 360px;
+}
+.chart-container canvas { cursor: pointer; }
+
+/* External bar tooltip – expands upward, stays on hover */
+.bar-tooltip {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.25s ease-out;
+    transform: translate(-50%, -100%);
+    min-width: 140px;
+    max-width: 220px;
+}
+.bar-tooltip.visible {
+    pointer-events: auto;
+    opacity: 1;
+}
+.bar-tooltip-inner {
+    background: #0f172a;
+    color: #fff;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.bar-tooltip-inner .tooltip-meta-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+}
+.bar-tooltip-inner .tooltip-meta-key { color: #94a3b8; font-weight: 700; }
+.bar-tooltip-inner .tooltip-meta-val { color: #ffffff; font-weight: 700; text-align: right; }
+.bar-tooltip-inner .tooltip-tasks { font-size: 0.8rem; color: #cbd5e1; line-height: 1.6; }
+.bar-tooltip-inner .tooltip-task-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-weight: 700;
+}
+.bar-tooltip-inner .tooltip-key { text-align: left; }
+.bar-tooltip-inner .tooltip-val { text-align: right; }
+.bar-tooltip-inner .tooltip-details {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #334155;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 700;
+}
+.bar-tooltip-inner .tooltip-details a {
+    color: #60a5fa;
+    text-decoration: none;
+}
+.bar-tooltip-inner .tooltip-details a:hover { text-decoration: underline; }
+
+.footer {
+    text-align: center;
+    padding: 60px 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Footer Social Icons */
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Optional: Add a subtle animation for the GitHub icon specifically */
+.footer-socials a .fa-github:hover {
+    color: #333; /* Classic GitHub Dark */
+}
+
+/* Model detail page */
+.back-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+.back-link:hover { text-decoration: underline; }
+
+.model-title {
+    font-family: SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 1.75rem;
+}
+.model-detail-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.model-detail-heading .model-detail-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+.model-meta { color: var(--text-light); }

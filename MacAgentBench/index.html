@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MacAgentBench | LLM Leaderboard & Analysis</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MacAgent<span>Bench</span></a>
+            <ul class="nav-links">
+                <li><a href="#rankings">Rankings</a></li>
+                <li><a href="#snapshots">Snapshots</a></li>
+                <li><a href="#">Methodology</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 align="center"><img src="assets/icon.jpg" alt="MacAgentBench icon" width="64" style="vertical-align: middle;">&nbsp; MacAgentBench: Benchmark agents where they actually work — on macOS.</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="snapshots" class="section">
+            <div class="section-header">
+                <h2>Benchmark Leaderboard</h2>
+                <p>Top 4 models score distribution and trends</p>
+            </div>
+            <div class="chart-container" id="chart-wrapper">
+                <canvas id="snapshotChart"></canvas>
+                <div id="bar-tooltip" class="bar-tooltip" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="rankings" class="section">
+            <div class="section-header">
+                <h2>Live Rankings</h2>
+            </div>
+            <div class="table-wrapper">
+                <table class="bench-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Agent</th>
+                            <th>Model</th>
+                            <th>Aggregate Score</th>
+                            <th>Parameters (B)</th>
+                            <th>Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranking-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="about.html" title="About Project"><i class="fas fa-info-circle"></i></a>
+                <a href="https://github.com/JetAstra/MacAgentBench" target="_blank" title="GitHub Repository"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2026 MacAgentBench Research Labs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
