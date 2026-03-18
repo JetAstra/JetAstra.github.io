@@ -1,0 +1,97 @@
+{
+  "id": "claude-4-6-opus",
+  "name": "Claude Opus 4.6 Thinking",
+  "org": "Anthropic",
+  "score": 83.64,
+  "params": "Hidden",
+  "date": "Mar 16, 2026",
+  "icon_name": "claude-color",
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 88.89
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 87.5
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 100.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 80.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 75.0
+    },
+    {
+      "name": "obsidian",
+      "successRate": 100.0
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 100.0
+    },
+    {
+      "name": "reminders",
+      "successRate": 90.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 83.33
+    },
+    {
+      "name": "video_frames",
+      "successRate": 66.67
+    },
+    {
+      "name": "weather",
+      "successRate": 75.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 75.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 60.0
+    },
+    {
+      "name": "pages",
+      "successRate": 37.5
+    }
+  ],
+  "costTotal": 150.776725,
+  "costAvg": 1.370697,
+  "runtimeSecondsTotal": 6427.12,
+  "runtimeSecondsAvg": 58.43,
+  "inputTokensTotal": 29511885,
+  "outputTokensTotal": 128692,
+  "cacheReadTokensTotal": 0,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 29640577,
+  "inputTokensAvg": 268289.86,
+  "outputTokensAvg": 1169.93,
+  "cacheReadTokensAvg": 0.0,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 269459.79
+}

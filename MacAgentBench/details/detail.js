@@ -4,15 +4,13 @@ function getModelId() {
     return params.get('id') || '';
 }
 
-// Fetch and parse JSONL
-async function loadModels() {
-    const res = await fetch('../data/models.jsonl');
-    const text = await res.text();
-    return text
-        .trim()
-        .split('\n')
-        .filter(line => line.trim())
-        .map(line => JSON.parse(line));
+// Fetch a single model by id
+async function loadModel(id) {
+    const res = await fetch(`../data/models/${id}.json`);
+    if (!res.ok) {
+        throw new Error(`Failed to load model ${id}`);
+    }
+    return res.json();
 }
 
 // Render model detail page
@@ -139,15 +137,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const models = await loadModels();
-        const model = models.find(m => m.id === id);
-        if (model) {
-            renderDetail(model);
-        } else {
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('not-found').style.display = 'block';
-        }
+        const model = await loadModel(id);
+        renderDetail(model);
     } catch (e) {
-        document.getElementById('loading').innerHTML = 'Failed to load data. <a href="../index.html">Back to Leaderboard</a>';
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('not-found').style.display = 'block';
     }
 });

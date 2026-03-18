@@ -1,0 +1,97 @@
+{
+  "id": "kimi-2-5",
+  "name": "Kimi K2.5",
+  "org": "Moonshot AI",
+  "score": 62.73,
+  "params": "1T (32B active)",
+  "date": "Mar 17, 2026",
+  "icon_name": "kimi",
+  "costTotal": 2.933196,
+  "costAvg": 0.026665,
+  "runtimeSecondsTotal": 8727.19,
+  "runtimeSecondsAvg": 79.34,
+  "inputTokensTotal": 929399,
+  "outputTokensTotal": 112343,
+  "cacheReadTokensTotal": 20385280,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 21427022,
+  "inputTokensAvg": 8449.08,
+  "outputTokensAvg": 1021.3,
+  "cacheReadTokensAvg": 185320.73,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 194791.11,
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 22.22
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 87.5
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 50.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 40.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 50.0
+    },
+    {
+      "name": "obsidian",
+      "successRate": 62.5
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 100.0
+    },
+    {
+      "name": "reminders",
+      "successRate": 90.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 50.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 66.67
+    },
+    {
+      "name": "video_frames",
+      "successRate": 100.0
+    },
+    {
+      "name": "weather",
+      "successRate": 0.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 50.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 0.0
+    },
+    {
+      "name": "pages",
+      "successRate": 25.0
+    }
+  ]
+}

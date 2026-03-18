@@ -1,0 +1,97 @@
+{
+  "id": "minimax-m2-5",
+  "name": "MiniMax M2.5",
+  "org": "MiniMax",
+  "score": 70.0,
+  "params": "230B (10B active)",
+  "date": "Mar 17, 2026",
+  "icon_name": "minimax-color",
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 11.11
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 87.5
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 100.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 40.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 75.0
+    },
+    {
+      "name": "obsidian",
+      "successRate": 100.0
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 100.0
+    },
+    {
+      "name": "reminders",
+      "successRate": 100.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 50.0
+    },
+    {
+      "name": "video_frames",
+      "successRate": 100.0
+    },
+    {
+      "name": "weather",
+      "successRate": 25.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 50.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 40.0
+    },
+    {
+      "name": "pages",
+      "successRate": 12.5
+    }
+  ],
+  "costTotal": 1.975313,
+  "costAvg": 0.017957,
+  "runtimeSecondsTotal": 8955.21,
+  "runtimeSecondsAvg": 81.41,
+  "inputTokensTotal": 2836880,
+  "outputTokensTotal": 203222,
+  "cacheReadTokensTotal": 29346081,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 32386183,
+  "inputTokensAvg": 25789.82,
+  "outputTokensAvg": 1847.47,
+  "cacheReadTokensAvg": 266782.55,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 294419.85
+}

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MacAgentBench | LLM Leaderboard & Analysis</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -13,7 +12,6 @@
             <a href="index.html" class="logo">MacAgent<span>Bench</span></a>
             <ul class="nav-links">
                 <li><a href="#rankings">Rankings</a></li>
-                <li><a href="#snapshots">Snapshots</a></li>
                 <li><a href="#">Methodology</a></li>
             </ul>
         </div>
@@ -26,39 +24,31 @@
     </header>
 
     <main class="container">
-        <section id="snapshots" class="section">
+        <section id="rankings" class="section">
             <div class="section-header">
                 <h2>Benchmark Leaderboard</h2>
-                <p>Top 4 models score distribution and trends</p>
+                <p>Aggregate score with model metadata in one view</p>
             </div>
-            <div class="chart-container" id="chart-wrapper">
-                <canvas id="snapshotChart"></canvas>
-                <div id="bar-tooltip" class="bar-tooltip" aria-hidden="true"></div>
+            <div class="leaderboard-card" id="leaderboard-root">
             </div>
         </section>
 
-        <hr class="divider">
-
-        <section id="rankings" class="section">
+        <section class="section">
             <div class="section-header">
-                <h2>Live Rankings</h2>
+                <h2>Efficiency Views</h2>
             </div>
-            <div class="table-wrapper">
-                <table class="bench-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Agent</th>
-                            <th>Model</th>
-                            <th>Aggregate Score</th>
-                            <th>Parameters (B)</th>
-                            <th>Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ranking-body">
-                        </tbody>
-                </table>
-            </div>
+            <div class="scatter-grid" id="scatter-root"></div>
+        </section>
+
+        <section class="section cta-section">
+            <a
+                href="https://github.com/JetAstra/MacAgentBench"
+                target="_blank"
+                rel="noreferrer"
+                class="cta-button"
+            >
+                Eval your agent! 🚀
+            </a>
         </section>
     </main>
 

@@ -1,0 +1,97 @@
+{
+  "id": "qwen-3-5-plus",
+  "name": "Qwen 3.5 Plus",
+  "org": "Alibaba",
+  "score": 74.55,
+  "params": "397B (17B active)",
+  "date": "Mar 18, 2026",
+  "icon_name": "qwen-color",
+  "costTotal": 10.325267,
+  "costAvg": 0.093866,
+  "runtimeSecondsTotal": 6226.31,
+  "runtimeSecondsAvg": 56.6,
+  "inputTokensTotal": 38457475,
+  "outputTokensTotal": 209182,
+  "cacheReadTokensTotal": 0,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 38666657,
+  "inputTokensAvg": 349613.41,
+  "outputTokensAvg": 1901.65,
+  "cacheReadTokensAvg": 0.0,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 351515.06,
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 22.22
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 87.5
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 50.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 80.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 62.5
+    },
+    {
+      "name": "obsidian",
+      "successRate": 87.5
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 100.0
+    },
+    {
+      "name": "reminders",
+      "successRate": 100.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 83.33
+    },
+    {
+      "name": "video_frames",
+      "successRate": 100.0
+    },
+    {
+      "name": "weather",
+      "successRate": 100.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 75.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 20.0
+    },
+    {
+      "name": "pages",
+      "successRate": 12.5
+    }
+  ]
+}
