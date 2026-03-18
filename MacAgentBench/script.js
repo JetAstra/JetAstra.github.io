@@ -54,11 +54,11 @@ function getPointColor(rank) {
 
 function escapeHtml(text) {
     return String(text)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#39;');
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
 }
 
 function createScatterPlotSvg({ title, subtitle, xKey, xLabel, formatX }) {
@@ -248,7 +248,21 @@ function renderScatterCharts() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    await loadModels();
-    renderLeaderboard();
-    renderScatterCharts();
+    try {
+        await loadModels();
+        renderLeaderboard();
+        renderScatterCharts();
+    } catch (error) {
+        console.error('Failed to initialize leaderboard', error);
+
+        const leaderboardRoot = document.getElementById('leaderboard-root');
+        if (leaderboardRoot) {
+            leaderboardRoot.innerHTML = '<div class="scatter-empty">Failed to load leaderboard data.</div>';
+        }
+
+        const scatterRoot = document.getElementById('scatter-root');
+        if (scatterRoot) {
+            scatterRoot.innerHTML = '<div class="scatter-card"><div class="scatter-empty">Failed to load chart data.</div></div>';
+        }
+    }
 });
