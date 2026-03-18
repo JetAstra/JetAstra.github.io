@@ -1,0 +1,97 @@
+{
+  "id": "gemini-3-1-pro-preview",
+  "name": "Gemini 3.1 Pro Preview",
+  "org": "Google",
+  "score": 82.73,
+  "params": "Hidden",
+  "date": "Mar 18, 2026",
+  "icon_name": "gemini-color",
+  "costTotal": 9.804604,
+  "costAvg": 0.089133,
+  "runtimeSecondsTotal": 7993.0,
+  "runtimeSecondsAvg": 72.66,
+  "inputTokensTotal": 2646966,
+  "outputTokensTotal": 182495,
+  "cacheReadTokensTotal": 11603662,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 14433123,
+  "inputTokensAvg": 24063.33,
+  "outputTokensAvg": 1659.05,
+  "cacheReadTokensAvg": 105487.84,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 131210.21,
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 66.67
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 75.0
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 50.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 60.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 75.0
+    },
+    {
+      "name": "obsidian",
+      "successRate": 87.5
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 100.0
+    },
+    {
+      "name": "reminders",
+      "successRate": 90.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 100.0
+    },
+    {
+      "name": "video_frames",
+      "successRate": 100.0
+    },
+    {
+      "name": "weather",
+      "successRate": 75.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 100.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 60.0
+    },
+    {
+      "name": "pages",
+      "successRate": 62.5
+    }
+  ]
+}
