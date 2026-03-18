@@ -3,6 +3,10 @@
   "name": "Kimi K2.5",
   "org": "Moonshot AI",
   "score": 62.73,
+  "scoreBar": {
+    "start": "#f97316",
+    "end": "#ea580c"
+  },
   "params": "1T (32B active)",
   "date": "Mar 17, 2026",
   "icon_name": "kimi",

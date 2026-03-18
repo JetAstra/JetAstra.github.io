@@ -3,6 +3,10 @@
   "name": "Qwen 3.5 Plus",
   "org": "Alibaba",
   "score": 74.55,
+  "scoreBar": {
+    "start": "#0ea5e9",
+    "end": "#0284c7"
+  },
   "params": "397B (17B active)",
   "date": "Mar 18, 2026",
   "icon_name": "qwen-color",

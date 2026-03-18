@@ -3,6 +3,10 @@
   "name": "MiniMax M2.5",
   "org": "MiniMax",
   "score": 70.0,
+  "scoreBar": {
+    "start": "#f59e0b",
+    "end": "#d97706"
+  },
   "params": "230B (10B active)",
   "date": "Mar 17, 2026",
   "icon_name": "minimax-color",

@@ -3,6 +3,10 @@
   "name": "Claude Opus 4.6 Thinking",
   "org": "Anthropic",
   "score": 83.64,
+  "scoreBar": {
+    "start": "#22c55e",
+    "end": "#16a34a"
+  },
   "params": "Hidden",
   "date": "Mar 16, 2026",
   "icon_name": "claude-color",

@@ -3,6 +3,10 @@
   "name": "GPT-5.4",
   "org": "OpenAI",
   "score": 78.18,
+  "scoreBar": {
+    "start": "#2563eb",
+    "end": "#1d4ed8"
+  },
   "params": "Hidden",
   "date": "Mar 17, 2026",
   "icon_name": "openai",

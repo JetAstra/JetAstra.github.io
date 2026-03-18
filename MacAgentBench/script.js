@@ -29,6 +29,24 @@ function getRankClass(rank) {
     return 'rank-badge rank-n';
 }
 
+function getScoreBarStyle(model) {
+    const config = model.scoreBar || model.score_bar;
+    if (config && typeof config === 'object' && config.start && config.end) {
+        return `background: linear-gradient(90deg, ${config.start}, ${config.end}); width: ${model.score}%;`;
+    }
+
+    if (model.rank === 1) {
+        return `background: linear-gradient(90deg, #f59e0b, #d97706); width: ${model.score}%;`;
+    }
+    if (model.rank === 2) {
+        return `background: linear-gradient(90deg, #0f766e, #0d9488); width: ${model.score}%;`;
+    }
+    if (model.rank === 3) {
+        return `background: linear-gradient(90deg, #ea580c, #c2410c); width: ${model.score}%;`;
+    }
+    return `background: linear-gradient(90deg, #64748b, #475569); width: ${model.score}%;`;
+}
+
 function formatRuntimePerTask(seconds) {
     if (typeof seconds !== 'number' || Number.isNaN(seconds)) return '-';
     return `${seconds.toFixed(2)}s`;
@@ -203,7 +221,7 @@ function renderLeaderboard() {
                                         <span class="leaderboard-score-label">/ 100</span>
                                     </div>
                                     <div class="leaderboard-bar-track">
-                                        <div class="leaderboard-bar-fill" style="width: ${model.score}%"></div>
+                                        <div class="leaderboard-bar-fill" style="${getScoreBarStyle(model)}"></div>
                                     </div>
                                 </div>
                             </td>
