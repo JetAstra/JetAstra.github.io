@@ -1,0 +1,101 @@
+{
+  "id": "glm-5",
+  "name": "GLM-5",
+  "org": "Zhipu AI",
+  "score": 70.0,
+  "scoreBar": {
+    "start": "#eab308",
+    "end": "#ca8a04"
+  },
+  "params": "Hidden",
+  "date": "Mar 19, 2026",
+  "icon_name": "zhipu-color",
+  "costTotal": 8.969141,
+  "costAvg": 0.081538,
+  "runtimeSecondsTotal": 8676.89,
+  "runtimeSecondsAvg": 78.88,
+  "inputTokensTotal": 3252998,
+  "outputTokensTotal": 173978,
+  "cacheReadTokensTotal": 25797067,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 29224043,
+  "inputTokensAvg": 29572.71,
+  "outputTokensAvg": 1581.62,
+  "cacheReadTokensAvg": 234518.79,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 265673.12,
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 22.22
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 75.0
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 100.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 20.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 87.5
+    },
+    {
+      "name": "obsidian",
+      "successRate": 75.0
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 100.0
+    },
+    {
+      "name": "reminders",
+      "successRate": 80.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 100.0
+    },
+    {
+      "name": "video_frames",
+      "successRate": 100.0
+    },
+    {
+      "name": "weather",
+      "successRate": 75.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 75.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 0.0
+    },
+    {
+      "name": "pages",
+      "successRate": 12.5
+    }
+  ]
+}

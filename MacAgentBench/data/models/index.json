@@ -36,6 +36,15 @@
     "icon_name": "qwen-color"
   },
   {
+    "id": "glm-5",
+    "name": "GLM-5",
+    "org": "Zhipu AI",
+    "score": 70.0,
+    "params": "Hidden",
+    "date": "Mar 19, 2026",
+    "icon_name": "zhipu-color"
+  },
+  {
     "id": "minimax-m2-5",
     "name": "MiniMax M2.5",
     "org": "MiniMax",
@@ -43,6 +52,15 @@
     "params": "230B (10B active)",
     "date": "Mar 17, 2026",
     "icon_name": "minimax-color"
+  },
+  {
+    "id": "step-3-5-flash",
+    "name": "Step 3.5 Flash",
+    "org": "StepFun",
+    "score": 66.36,
+    "params": "Hidden",
+    "date": "Mar 19, 2026",
+    "icon_name": "stepfun-color"
   },
   {
     "id": "kimi-2-5",

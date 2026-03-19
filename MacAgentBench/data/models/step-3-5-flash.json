@@ -1,0 +1,101 @@
+{
+  "id": "step-3-5-flash",
+  "name": "Step 3.5 Flash",
+  "org": "StepFun",
+  "score": 66.36,
+  "scoreBar": {
+    "start": "#f97316",
+    "end": "#dc2626"
+  },
+  "params": "Hidden",
+  "date": "Mar 19, 2026",
+  "icon_name": "stepfun-color",
+  "costTotal": 3.863918,
+  "costAvg": 0.035127,
+  "runtimeSecondsTotal": 8362.45,
+  "runtimeSecondsAvg": 76.02,
+  "inputTokensTotal": 37721135,
+  "outputTokensTotal": 306016,
+  "cacheReadTokensTotal": 0,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 38027151,
+  "inputTokensAvg": 342919.41,
+  "outputTokensAvg": 2781.96,
+  "cacheReadTokensAvg": 0.0,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 345701.37,
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 11.11
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 37.5
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 85.71
+    },
+    {
+      "name": "clawhub",
+      "successRate": 50.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 75.0
+    },
+    {
+      "name": "github",
+      "successRate": 80.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 62.5
+    },
+    {
+      "name": "obsidian",
+      "successRate": 87.5
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 87.5
+    },
+    {
+      "name": "reminders",
+      "successRate": 100.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 50.0
+    },
+    {
+      "name": "video_frames",
+      "successRate": 100.0
+    },
+    {
+      "name": "weather",
+      "successRate": 100.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 75.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 20.0
+    },
+    {
+      "name": "pages",
+      "successRate": 12.5
+    }
+  ]
+}
