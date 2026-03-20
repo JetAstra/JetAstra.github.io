@@ -63,6 +63,24 @@
     "icon_name": "stepfun-color"
   },
   {
+    "id": "deepseek-v3-2",
+    "name": "DeepSeek V3.2",
+    "org": "DeepSeek",
+    "score": 65.45,
+    "params": "Hidden",
+    "date": "Mar 20, 2026",
+    "icon_name": "deepseek-color"
+  },
+  {
+    "id": "qwen3-5-27b",
+    "name": "Qwen 3.5 27B",
+    "org": "Alibaba",
+    "score": 64.55,
+    "params": "27B",
+    "date": "Mar 20, 2026",
+    "icon_name": "qwen-color"
+  },
+  {
     "id": "kimi-2-5",
     "name": "Kimi K2.5",
     "org": "Moonshot AI",

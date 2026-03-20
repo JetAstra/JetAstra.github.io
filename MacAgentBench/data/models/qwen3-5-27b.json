@@ -1,0 +1,101 @@
+{
+  "id": "qwen3-5-27b",
+  "name": "Qwen 3.5 27B",
+  "org": "Alibaba",
+  "score": 64.55,
+  "scoreBar": {
+    "start": "#f97316",
+    "end": "#ea580c"
+  },
+  "params": "27B",
+  "date": "Mar 20, 2026",
+  "icon_name": "qwen-color",
+  "costTotal": 6.417019,
+  "costAvg": 0.058337,
+  "runtimeSecondsTotal": 7994.85,
+  "runtimeSecondsAvg": 72.68,
+  "inputTokensTotal": 31132253,
+  "outputTokensTotal": 221942,
+  "cacheReadTokensTotal": 0,
+  "cacheWriteTokensTotal": 0,
+  "totalTokensTotal": 31354195,
+  "inputTokensAvg": 283020.48,
+  "outputTokensAvg": 2017.65,
+  "cacheReadTokensAvg": 0.0,
+  "cacheWriteTokensAvg": 0.0,
+  "totalTokensAvg": 285038.14,
+  "tasks": [
+    {
+      "name": "keynote",
+      "successRate": 11.11
+    },
+    {
+      "name": "apple_notes",
+      "successRate": 50.0
+    },
+    {
+      "name": "blogwatcher",
+      "successRate": 71.43
+    },
+    {
+      "name": "clawhub",
+      "successRate": 50.0
+    },
+    {
+      "name": "gifgrep",
+      "successRate": 100.0
+    },
+    {
+      "name": "github",
+      "successRate": 60.0
+    },
+    {
+      "name": "himalaya",
+      "successRate": 87.5
+    },
+    {
+      "name": "obsidian",
+      "successRate": 100.0
+    },
+    {
+      "name": "peekaboo",
+      "successRate": 62.5
+    },
+    {
+      "name": "reminders",
+      "successRate": 80.0
+    },
+    {
+      "name": "sherpa_onnx_tts",
+      "successRate": 100.0
+    },
+    {
+      "name": "songsee",
+      "successRate": 100.0
+    },
+    {
+      "name": "tmux",
+      "successRate": 66.67
+    },
+    {
+      "name": "video_frames",
+      "successRate": 33.33
+    },
+    {
+      "name": "weather",
+      "successRate": 100.0
+    },
+    {
+      "name": "whisper",
+      "successRate": 50.0
+    },
+    {
+      "name": "numbers",
+      "successRate": 20.0
+    },
+    {
+      "name": "pages",
+      "successRate": 25.0
+    }
+  ]
+}
